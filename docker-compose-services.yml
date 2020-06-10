@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  playground:
+    restart: always
+    image: architectureplayground/playground
+    ports:
+      - 7999:7999
+    environment:
+      # compose environment variables https://docs.docker.com/compose/environment-variables/
+      - POSTGRES_HOST=db_posgtgres
+      - CONSUL_HOST=consul
+    depends_on:
+      - db_posgtgres
+      - consul
